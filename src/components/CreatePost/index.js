@@ -10,6 +10,7 @@ const CreatePost = ({
   field,
   keyboard = 'default',
   fieldHeight = 50,
+  focus = false,
 }) => {
   function onChange(value) {
     setData({...data, [field]: value});
@@ -23,6 +24,7 @@ const CreatePost = ({
         onChangeText={value => onChange(value)}
         value={text}
         keyboardType={keyboard}
+        autoFocus={focus}
       />
     </Fragment>
   );

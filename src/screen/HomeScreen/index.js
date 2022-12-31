@@ -41,6 +41,7 @@ const HomeScreen = ({navigation}) => {
         data={data}
         setData={setData}
         field={'name'}
+        focus={true}
       />
       <CreatePost
         textField={'User Id'}
