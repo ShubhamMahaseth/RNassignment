@@ -2,11 +2,11 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
-    alignItems: 'flex-start',
+    flex: 1,
+    alignItems: 'center',
     justifyContent: 'center',
-    paddingLeft: 10,
-    backgroundColor: 'gray',
+    paddingLeft: 8,
+    backgroundColor: '#7dbdef',
   },
   image: {
     width: 120,

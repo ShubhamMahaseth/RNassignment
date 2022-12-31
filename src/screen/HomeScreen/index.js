@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from 'react';
-import {View, Text, Button, Pressable, TouchableHighlight} from 'react-native';
+import {Text, Button, TouchableHighlight, ScrollView} from 'react-native';
 import Axios from 'axios';
 import CreatePost from '../../components/CreatePost';
 import styles from './style';
@@ -9,19 +9,14 @@ const HomeScreen = ({navigation}) => {
     name: '',
     user_id: '92',
     post_type: '1',
-    description: '',
-    images: [
-      'http://182.76.237.238/~apitest/sme_link/storage/app/post_image/16523577301205221JPEG_20220512_174513_7665785817951196834.jpg',
-    ],
-    videos:
-      'http://182.76.237.238/~apitest/sme_link/storage/app/profile_image/16523585821205221638945964427.jpg',
-    video_thumbnail:
-      'http://182.76.237.238/~apitest/sme_link/storage/app/profile_image/16523585821205221638945964427.jpg',
+    discription: '',
+    images: null,
+    videos: null,
+    video_thumbnail: null,
   });
 
   async function handleData() {
     const newRecord = data;
-
     await Axios.post(
       'http://182.76.237.238/~apitest/sme_link/api/create_post',
       newRecord,
@@ -39,7 +34,7 @@ const HomeScreen = ({navigation}) => {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <CreatePost
         textField={'Enter Name'}
         text={data.name}
@@ -65,15 +60,15 @@ const HomeScreen = ({navigation}) => {
       />
       <CreatePost
         textField={'Description'}
-        text={data.description}
+        text={data.discription}
         data={data}
         setData={setData}
-        field={'description'}
+        field={'discription'}
         fieldHeight={90}
       />
       <CreatePost
         textField={'Images'}
-        text={data.images[0]}
+        text={data.images}
         data={data}
         setData={setData}
         field={'images'}
@@ -104,7 +99,7 @@ const HomeScreen = ({navigation}) => {
         activeOpacity={1}>
         <Text style={styles.text}>Get Data</Text>
       </TouchableHighlight>
-    </View>
+    </ScrollView>
   );
 };
 
