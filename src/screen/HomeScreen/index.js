@@ -17,20 +17,25 @@ const HomeScreen = ({navigation}) => {
 
   async function handleData() {
     const newRecord = data;
-    await Axios.post(
-      'http://182.76.237.238/~apitest/sme_link/api/create_post',
-      newRecord,
-    )
-      .then(res => {
-        if (res) {
-          navigation.navigate('Success');
-        }
-      })
-      .catch(err => {
-        if (err) {
-          navigation.navigate('Error');
-        }
-      });
+    // console.log(newRecord.name);
+    if (newRecord.name == '' || newRecord.discription == '') {
+      navigation.navigate('Error');
+    } else {
+      await Axios.post(
+        'http://182.76.237.238/~apitest/sme_link/api/create_post',
+        newRecord,
+      )
+        .then(res => {
+          if (res) {
+            navigation.navigate('Success');
+          }
+        })
+        .catch(err => {
+          if (err) {
+            navigation.navigate('Error');
+          }
+        });
+    }
   }
 
   return (
